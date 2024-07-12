@@ -20,6 +20,6 @@ html, body {
     margin-left: -75px;
 }
 
-#computadora-cartas, #jugador-cartas {
+ #computadora-cartas, #jugador-cartas { /*id de div */
     height: 240px;
 }
