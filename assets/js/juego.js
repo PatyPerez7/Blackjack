@@ -13,7 +13,7 @@ const especiales = ['A','J','Q','K'];
 // let puntosJugador = 0,
 //     puntosComputadora = 0;
 
-// // Referencias del HTML
+// // referencias de HTML
 // const btnPedir   = document.querySelector('#btnPedir');
 // const btnDetener = document.querySelector('#btnDetener');
 // const btnNuevo   = document.querySelector('#btnNuevo');
@@ -23,7 +23,7 @@ const especiales = ['A','J','Q','K'];
 
 // const puntosHTML = document.querySelectorAll('small');
 
-// esta función crea un nuevo deck
+// esta funcion crea un nuevo deck
 const crearDeck = () => {
 
     //numeros del 2 al 10
@@ -39,33 +39,43 @@ const crearDeck = () => {
             deck.push( esp + tipo);
         }
     }
-    console.log( deck );
-    // deck = _.shuffle( deck );
+
     // console.log( deck );
-    // return deck;
+    deck = _.shuffle( deck );//deck "barajeado"; shuffle de orden del deck
+    console.log( deck );
+    return deck;
 }
 
-//mandamos a llamar la funcion
 crearDeck();
 
-// // Esta función me permite tomar una carta
-// const pedirCarta = () => {
+// Esta función me permite tomar una carta
+const pedirCarta = () => {
+    if ( deck.length === 0 ) {
+        throw 'No hay cartas en el deck';
+    }
+    const carta = deck.pop(); //pop() va a remover el ultimo elemento del arreglo y lo regresa
 
-//     if ( deck.length === 0 ) {
-//         throw 'No hay cartas en el deck';
-//     }
-//     const carta = deck.pop();
-//     return carta;
-// }
+    console.log(deck);
+    console.log(carta);//carta debe de ser de la baraja
+    return carta;
+}
 
-// // pedirCarta();
-// const valorCarta = ( carta ) => {
+//pedirCarta();
 
-//     const valor = carta.substring(0, carta.length - 1);
-//     return ( isNaN( valor ) ) ? 
-//             ( valor === 'A' ) ? 11 : 10
-//             : valor * 1;
-// }
+const valorCarta = ( carta ) => {
+
+    const valor = carta.substring(0, carta.length - 1); //.substring() regresa un nuevo string cortado en base a la pos inicial
+    //remueve el ultimo caracter del string
+    
+        return ( isNaN( valor ) ) ? //if isNaN = isNotaNumber
+            ( valor === 'A' ) ? 11 : 10 //if valor = 'A' entonces 11 else 10
+            : valor * 1; //practica para convertir un string en valor numerico
+        //regresa si el valor no es numerico, si el valor es 'A' o no y convierte el resultado(string) a numerico.
+}
+
+//
+const valor = valorCarta(pedirCarta());
+console.log({valor});
 
 // // turno de la computadora
 // const turnoComputadora = ( puntosMinimos ) => {
@@ -100,7 +110,6 @@ crearDeck();
 //         }
 //     }, 100 );
 // }
-
 
 
 // // Eventos
