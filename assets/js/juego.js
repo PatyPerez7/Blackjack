@@ -10,18 +10,18 @@ let deck         = [];
 const tipos      = ['C','D','H','S'];
 const especiales = ['A','J','Q','K'];
 
-// let puntosJugador = 0,
-//     puntosComputadora = 0;
+let puntosJugador = 0, 
+    puntosComputadora = 0;
 
-// // referencias de HTML
-// const btnPedir   = document.querySelector('#btnPedir');
-// const btnDetener = document.querySelector('#btnDetener');
-// const btnNuevo   = document.querySelector('#btnNuevo');
+// referencias de HTML
+const btnPedir   = document.querySelector('#btnPedir');
+const btnDetener = document.querySelector('#btnDetener');
+const btnNuevo   = document.querySelector('#btnNuevo');
 
-// const divCartasJugador     = document.querySelector('#jugador-cartas');
-// const divCartasComputadora = document.querySelector('#computadora-cartas');
+const divCartasJugador     = document.querySelector('#jugador-cartas');
+const divCartasComputadora = document.querySelector('#computadora-cartas');
 
-// const puntosHTML = document.querySelectorAll('small');
+const puntosHTML = document.querySelectorAll('small');
 
 // esta funcion crea un nuevo deck
 const crearDeck = () => {
@@ -55,8 +55,8 @@ const pedirCarta = () => {
     }
     const carta = deck.pop(); //pop() va a remover el ultimo elemento del arreglo y lo regresa
 
-    console.log(deck);
-    console.log(carta);//carta debe de ser de la baraja
+    // console.log(deck);
+    // console.log(carta);//carta debe de ser de la baraja
     return carta;
 }
 
@@ -73,7 +73,6 @@ const valorCarta = ( carta ) => {
         //regresa si el valor no es numerico, si el valor es 'A' o no y convierte el resultado(string) a numerico.
 }
 
-//
 const valor = valorCarta(pedirCarta());
 console.log({valor});
 
@@ -112,19 +111,21 @@ console.log({valor});
 // }
 
 
-// // Eventos
-// btnPedir.addEventListener('click', () => {
+// Eventos
+btnPedir.addEventListener('click', () => {
 
-//     const carta = pedirCarta();
+    const carta = pedirCarta();
+    // console.log(carta);
     
-//     puntosJugador = puntosJugador + valorCarta( carta );
-//     puntosHTML[0].innerText = puntosJugador;
+    puntosJugador = puntosJugador + valorCarta( carta );
+    //console.log(puntosJugador); //puntos jugador -> suma de valor de cartas
+    puntosHTML[0].innerText = puntosJugador; //modificacion de puntos de jugador en el texto de Jugador 1
     
 //     // <img class="carta" src="assets/cartas/2C.png">
-//     const imgCarta = document.createElement('img');
-//     imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
+    const imgCarta = document.createElement('img');
+    imgCarta.src = `assets/cartas/${ carta }.png`; //3H, JD
 //     imgCarta.classList.add('carta');
-//     divCartasJugador.append( imgCarta );
+    divCartasJugador.append( imgCarta );
 
 //     if ( puntosJugador > 21 ) {
 //         console.warn('Lo siento mucho, perdiste');
@@ -139,7 +140,7 @@ console.log({valor});
 //         turnoComputadora( puntosJugador );
 //     }
 
-// });
+    });
 
 
 // btnDetener.addEventListener('click', () => {
